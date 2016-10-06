@@ -6,21 +6,23 @@ export default class TimeUnitPicker extends Component {
       super (props);
     
       this.state = {
-        inputValue: "",
-        data: props.data || ['Erster', 'Zweiter', 'Dritter']
+        timeUnit: "month",
+        title: "Monats Ansicht"
       }
-    
       this.handleUnitSelected = this.handleUnitSelected.bind(this);
     }
   
+    handleUnitSelected (eventKey, event) {
+      this.setState({timeUnit: eventKey, title: eventKey === "month" ? "Monats Ansicht" : "Wochen Ansicht",});
+    }
+  
     render () {
-
         var self = this;
 
         return (
-          <SplitButton title="Time Unit Picker" pullRight id="time-unit-picker" onSelect={this.handleUnitSelected}>
-            <MenuItem eventKey="1">Wochen Ansicht</MenuItem>
-            <MenuItem eventKey="2">Monats Ansicht</MenuItem>
+          <SplitButton title={this.state.title} pullRight id="time-unit-picker" onSelect={this.handleUnitSelected}>
+            <MenuItem eventKey="week">Wochen Ansicht</MenuItem>
+            <MenuItem eventKey="month">Monats Ansicht</MenuItem>
           </SplitButton>
         )
     }
