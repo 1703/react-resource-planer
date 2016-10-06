@@ -6,6 +6,9 @@ import logo from './logo.svg';
 import './App.css';
 import Chart from './components/chart'
 
+import persons from './sample_data/persons.json'
+import projects from './sample_data/projects.json'
+
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // Needed for onTouchTap
@@ -15,6 +18,11 @@ injectTapEventPlugin();
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends Component {
+
+    constructor (props) {
+        super (props)
+    }
+
   render() {
     return (
         <MuiThemeProvider>
@@ -23,13 +31,7 @@ class App extends Component {
                   <h2>Resource Planer</h2>
               </Row>
               <Row>
-                  <Chart persons={
-                      [
-                          {name:"A"},
-                          {name:"B"},
-                          {name:"C"}
-                      ]
-                  } />
+                  <Chart persons={persons} projects={projects} />
               </Row>
             </Grid>
         </MuiThemeProvider>

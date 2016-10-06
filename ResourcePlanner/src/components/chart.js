@@ -4,7 +4,7 @@ import PersonLane from './person_lane'
 
 import {Grid, Col, Row, Button, Nav, NavItem} from 'react-bootstrap'
 
-export default class Chart extends Component {
+export default class Chart extends ExtComponent {
 
 // +currentTimeFrame (state)
 // +timeUnit (state)
@@ -14,17 +14,25 @@ export default class Chart extends Component {
     constructor (props) {
         super (props)
 
+        this.state = {
+            projects: this.initDef (props.projects, [])
+        }
     }
 
     createPersonLanes = () => {
-        return this.props.persons.map (x => <PersonLane person={x} projects={this.findProjects(x)}/>)
+        return this.props.persons.map (x => {
+            var projects = this.findProjects(x);
+            console.log("Person:" + x + "projects: " + projects);
+            return <PersonLane person={x} projects={projects}/>;
+        });
     }
 
     findProjects = person => {
-        return [
-            {name: "test1"},
-            {name: "test2"}
-        ]
+        return this.state.projects.filter (x => {
+            return x.participants.includes(x.id);
+        }).map(x => {
+            return <PersonLane person={x}/>
+        })
     }
 
     render () {
