@@ -18,13 +18,17 @@ export default class Project extends ExtComponent {
         super(props)
         this.state = {
             timeUnit : this.initDef(props.data.timeUnit, "days"),
-            start : this.initDef(props.data.start, Date.now()),
-            stop : this.initDef(props.data.stop, Date.now()+(24*60*60*1000))
+            length : this.initDef(props.data.stop - props.data.start, 0) + "px",
+            offset : this.initDef(props.data.start, 0) + "px",
         }
     }
 
     updateSize (start, stop, timeunit) {
-
+        this.setState({
+          timeUnit: timeunit, 
+          length: stop - start + "px",
+          offset: start + "px"
+        });
     }
 
     render () {
@@ -32,7 +36,8 @@ export default class Project extends ExtComponent {
         var self = this;
 
         var style = {
-            width : "500px"
+            width : this.state.length,
+            marginLeft : this.state.offset
         }
 
         return <Button style={style} bsSize="large">{self.props.data.name}</Button>
