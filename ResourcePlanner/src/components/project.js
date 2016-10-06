@@ -17,9 +17,9 @@ export default class Project extends ExtComponent {
     constructor (props) {
         super(props)
         this.state = {
-            timeUnit : this.initDef(props.timeUnit, "days"),
-            start : this.initDef(props.start, Date.now()),
-            stop : this.initDef(props.stop, Date.now()+(24*60*60*1000))
+            timeUnit : this.initDef(props.data.timeUnit, "days"),
+            start : this.initDef(props.data.start, Date.now()),
+            stop : this.initDef(props.data.stop, Date.now()+(24*60*60*1000))
         }
     }
 
@@ -35,6 +35,6 @@ export default class Project extends ExtComponent {
             width : "500px"
         }
 
-        return <Button style={style} bsSize="large">{self.props.name}</Button>
+        return <Button style={style} bsSize="large">{self.props.data.name}</Button>
     }
 }

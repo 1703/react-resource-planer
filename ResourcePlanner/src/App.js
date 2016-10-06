@@ -4,7 +4,7 @@ import './bootstrap/css/bootstrap.min.css'
 import './bootstrap/css/bootstrap-theme.min.css'
 import logo from './logo.svg';
 import './App.css';
-import Project from './components/project'
+import PersonLane from './components/person_lane'
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -23,7 +23,13 @@ class App extends Component {
                   <h2>Resource Planer</h2>
               </Row>
               <Row>
-                  <Project name={"test project 1"}/>
+                  <PersonLane projects={
+                      [
+                          {name:"test1"},
+                          {name:"test2"}
+                      ]}
+                      person={{name:"user1"}}
+                  />
               </Row>
             </Grid>
         </MuiThemeProvider>
