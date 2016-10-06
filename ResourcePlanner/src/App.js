@@ -4,7 +4,7 @@ import './bootstrap/css/bootstrap.min.css'
 import './bootstrap/css/bootstrap-theme.min.css'
 import logo from './logo.svg';
 import './App.css';
-import Person from './components/person'
+import Project from './components/project'
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -23,7 +23,7 @@ class App extends Component {
                   <h2>Resource Planer</h2>
               </Row>
               <Row>
-                  <Person name={"Testi"} />
+                  <Project name={"test project 1"}/>
               </Row>
             </Grid>
         </MuiThemeProvider>

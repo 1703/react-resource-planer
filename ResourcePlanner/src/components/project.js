@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ExtComponent from './ext_component'
+import {Button} from 'react-bootstrap'
 
 export default class Project extends ExtComponent {
 
@@ -22,12 +23,18 @@ export default class Project extends ExtComponent {
         }
     }
 
+    updateSize (start, stop, timeunit) {
+
+    }
+
     render () {
 
         var self = this;
 
-        return <div>
-            HOME :-)
-        </div>
+        var style = {
+            width : "500px"
+        }
+
+        return <Button style={style} bsSize="large">{self.props.name}</Button>
     }
 }
