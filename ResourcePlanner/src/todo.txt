@@ -1,0 +1,60 @@
+Chart
++currentTimeFrame (state)
++timeUnit (state)
++timeLane (comp)
++personLanes (comp)
+
+-CreateProject
+-+project (state)
+-+callback (prop)
+-+handleCreateProject()->project->callback
+
+-EditProject
+-+project (prop)
+-+callback (prop)
+-+handleEditProject()->project->callback.handleEdit
+-+handleDeleteProject()->project->callback.handleDelete
+
+-TimeLine
+-+currentTimeFrame (state)
+-+timeUnit (state)
+-+timeFrameSelector (comp)
+-+timeUnitSelector (comp)
+
+-TimeFrameSelector
+-+start (state)
+-+end (state)
+-+callback (prop)
+-+handleFrameChanged()->(start,stop)->callback
+
+-TimeUnitPicker
+-+type (state)
+-+callback (prop)
+-+handleTypeChange()->type->callback
+
+-PersonLane
+-+id (prop)
+-+timeUnit (state)
+-+person:Person (prop)
+-+projects:Projects (state)
+
+--Person
+--+id (prop)
+--+name (prop)
+--+projects:Projects (prop)
+--+role (prop)
+
+--Projects
+---+id (prop)
+---+projects (comp, prop)
+
+---Project
+---+id (prop)
+---+timeUnit (state)
+---+start (state)
+---+end (state)
+---+color (prop)
+---+status (state)
+---+name (prop)
+---+editProject (comp)
+---+resources[]:Person (prop)

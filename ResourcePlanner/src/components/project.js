@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {ExtComponent} from 'ext_component'
+import ExtComponent from './ext_component'
 
 export default class Project extends ExtComponent {
 
@@ -14,9 +14,12 @@ export default class Project extends ExtComponent {
 // ---+resources[]:Person (prop)
 
     constructor (props) {
-        this.state.timeUnit = initDef(props.timeUnit, "days")
-        this.state.start = initDef(props.start, Date.now())
-        this.state.stop = initDef(props.stop, Date.now()+(24*60*60*1000))
+        super(props)
+        this.state = {
+            timeUnit : this.initDef(props.timeUnit, "days"),
+            start : this.initDef(props.start, Date.now()),
+            stop : this.initDef(props.stop, Date.now()+(24*60*60*1000))
+        }
     }
 
     render () {
