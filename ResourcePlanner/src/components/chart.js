@@ -22,16 +22,14 @@ export default class Chart extends ExtComponent {
     createPersonLanes = () => {
         return this.props.persons.map (x => {
             var projects = this.findProjects(x);
-            console.log("Person:" + x + "projects: " + projects);
+            // console.log("Person:" + x.id + "projects: " + projects.map (y => y.name));
             return <PersonLane person={x} projects={projects}/>;
         });
     }
 
     findProjects = person => {
         return this.state.projects.filter (x => {
-            return x.participants.includes(x.id);
-        }).map(x => {
-            return <PersonLane person={x}/>
+            return x.participants.includes(person.id);
         })
     }
 
